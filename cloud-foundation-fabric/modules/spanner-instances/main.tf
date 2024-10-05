@@ -42,6 +42,7 @@ data "google_spanner_instance" "spanner_instance" {
 }
 
 resource "google_spanner_instance" "spanner_instance" {
+  provider         = google-beta
   count            = var.instance_create ? 1 : 0
   project          = var.project_id
   config           = var.instance.config.auto_create == null ? var.instance.config.name : google_spanner_instance_config.spanner_instance_config[0].name
